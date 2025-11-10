@@ -1,0 +1,43 @@
+﻿<Window x:Class="Labb_3.PackOptionsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Labb_3"
+        mc:Ignorable="d"
+       Title="PackOptionsDialog" Height="210" Width="200">
+    <Grid>
+        <StackPanel>
+            <Label 
+                Content="Pack Name:"
+                Margin="10 0"
+                FontWeight="Bold"/>
+            <TextBox 
+                Margin="10 0"/>
+            <Label 
+                Content="Difficulty:"
+                Margin="10 10 10 0"
+                FontWeight="Bold"/>
+            <ComboBox 
+                Margin="10 0 10 5"
+                />
+            <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
+                <Label 
+                    Content="Time Limit:"
+                    Margin="10 0 2 2"
+                    FontWeight="bold"/>
+                <Label 
+                    Content="30 Seconds" 
+                    FontSize="10" 
+                    Margin="30 2 15 0"/>
+            </StackPanel>
+            <Slider 
+                Margin="10 0"
+                Minimum="2" 
+                Maximum="60"
+                Value="30"
+                TickFrequency="5"
+                />
+        </StackPanel>
+    </Grid>
+</Window>
