@@ -27,7 +27,7 @@ namespace Labb_3.Views
 
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
-            QuestionListBox.
+            
         }
     }
 }

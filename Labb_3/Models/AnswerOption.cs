@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Labb_3.Models
 {
-    public class Question
+    public class AnswerOption
     {
         public string Text { get; set; } = "";
-        public List<AnswerOption> Options { get; set; } = new();
+        public bool isCorrect { get; set; }
     }
 }

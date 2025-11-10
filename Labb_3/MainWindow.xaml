@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Labb_3"
         xmlns:views="clr-namespace:Labb_3.Views"
         mc:Ignorable="d"
-        d:Width="400" d:Height="800" d:FontSize="24"
+        d:Width="600" d:Height="500" d:FontSize="24"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Labb_3.Views"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:components="clr-namespace:Labb_3.Views.Components"
+             
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500"
              Background="White">
@@ -49,8 +50,7 @@
                     Width="20" 
                     HorizontalAlignment="Right"
                     ToolTip="Add Question"
-                    x:Name="PlusButton"
-                    Click="PlusButton_Click">
+                    Command="{Binding}">
                     <fa:IconBlock Icon="Plus" />
                 </Button>
                 <Button 
