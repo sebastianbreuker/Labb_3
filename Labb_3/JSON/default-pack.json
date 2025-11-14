@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Default Question Pack",
+    "Difficulty": 1,
+    "TimeLimitInSeconds": 20,
+    "Questions": [
+      {
+        "Text": "Vad är 1 + 1?",
+        "Options": [
+          { "Text": "2", "isCorrect": true },
+          { "Text": "1", "isCorrect": false },
+          { "Text": "3", "isCorrect": false },
+          { "Text": "4", "isCorrect": false }
+        ]
+      }
+    ]
+  }
+]
+
+

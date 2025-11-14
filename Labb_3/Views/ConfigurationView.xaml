@@ -29,7 +29,7 @@
             </Grid.ColumnDefinitions>
 
             <Label 
-                Content="Active pack:" 
+                Content="{Binding ActivePack.Name}" 
                 Margin="5"
                 FontWeight="Bold"
                 Grid.Column="0"/>
@@ -41,7 +41,7 @@
                     Width="20" 
                     HorizontalAlignment="Right"
                     ToolTip="Options"
-                    Command="{Binding AddQuestionCommand}">
+                    Command="{Binding OpenPackOptionsCommand}">
                     <fa:IconBlock Icon="Sliders" />
                 </Button>
                 <Button 
@@ -50,7 +50,7 @@
                     Width="20" 
                     HorizontalAlignment="Right"
                     ToolTip="Add Question"
-                    Command="{Binding}">
+                    Command="{Binding AddQuestionCommand}">
                     <fa:IconBlock Icon="Plus" />
                 </Button>
                 <Button 
@@ -58,21 +58,31 @@
                     Height="20" 
                     Width="20" 
                     HorizontalAlignment="Right"
-                    ToolTip="Remove Question">
+                    ToolTip="Remove Question"
+                    Command="{Binding RemoveQuestionCommand}">
                     <fa:IconBlock Icon="Minus" />
                 </Button>
             </StackPanel>
             
         </Grid>
-        <ListBox x:Name="QuestionListBox" Grid.Row="1" Grid.Column="0">
-            
-
+        <ListBox x:Name="QuestionListBox" Grid.Row="1" Grid.Column="0"
+				 ItemsSource="{Binding ActivePack.Questions}"
+				 SelectedItem="{Binding ActivePack.SelectedQuestion, Mode=TwoWay}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Margin="2">
+						<Label Content="Question" FontWeight="Bold"/>
+						<TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
         </ListBox>
 
         <components:QuestionDisplay 
             Grid.Column="1" 
             Grid.Row="0" 
-            Grid.RowSpan="2"/>
+            Grid.RowSpan="2"
+            DataContext="{Binding ActivePack.SelectedQuestion}"/>
 
 
 

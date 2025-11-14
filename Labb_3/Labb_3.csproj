@@ -12,4 +12,10 @@
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="JSON\default-pack.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

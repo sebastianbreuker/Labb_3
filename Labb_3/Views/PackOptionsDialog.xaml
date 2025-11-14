@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labb_3"
+        xmlns:models="clr-namespace:Labb_3.Models"
         mc:Ignorable="d"
-       Title="PackOptionsDialog" Height="210" Width="200">
+        Title="PackOptionsDialog"
+        Height="210"
+        Width="220"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <StackPanel>
             <Label 
@@ -13,21 +17,27 @@
                 Margin="10 0"
                 FontWeight="Bold"/>
             <TextBox 
-                Margin="10 0"/>
+                Margin="10 0"
+                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
                 Content="Difficulty:"
                 Margin="10 10 10 0"
                 FontWeight="Bold"/>
             <ComboBox 
                 Margin="10 0 10 5"
-                />
+                SelectedValuePath="Tag"
+                SelectedValue="{Binding Difficulty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBoxItem Content="Easy" Tag="{x:Static models:Difficulty.Easy}" />
+                <ComboBoxItem Content="Medium" Tag="{x:Static models:Difficulty.Medium}" />
+                <ComboBoxItem Content="Hard" Tag="{x:Static models:Difficulty.Hard}" />
+            </ComboBox>
             <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
                 <Label 
                     Content="Time Limit:"
                     Margin="10 0 2 2"
                     FontWeight="bold"/>
                 <Label 
-                    Content="30 Seconds" 
+                    Content="{Binding TimeLimitInSeconds, StringFormat={}{0} Seconds}" 
                     FontSize="10" 
                     Margin="30 2 15 0"/>
             </StackPanel>
@@ -35,9 +45,9 @@
                 Margin="10 0"
                 Minimum="2" 
                 Maximum="60"
-                Value="30"
+                Value="{Binding TimeLimitInSeconds, Mode=TwoWay}"
                 TickFrequency="5"
-                />
+                IsSnapToTickEnabled="True"/>
         </StackPanel>
     </Grid>
 </Window>

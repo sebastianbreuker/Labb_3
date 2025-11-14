@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labb_3.Views"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:command="clr-namespace:Labb_3.Command"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Menu>
@@ -12,24 +13,40 @@
             <MenuItem 
                 Header="New Question Pack" 
                 Icon="{fa:Icon File}"
+                Command="{Binding NewPackCommand}"
             />
             <MenuItem 
                 Header="Select Question Pack" 
-                Icon="{fa:Icon FolderOpen}" />
+                Icon="{fa:Icon FolderOpen}">
+                <MenuItem.ItemsSource>
+                    <Binding Path="Packs"/>
+                </MenuItem.ItemsSource>
+                <MenuItem.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Header" Value="{Binding Name}"/>
+                        <Setter Property="Command" Value="{Binding DataContext.SelectPackCommand,
+                            RelativeSource={RelativeSource AncestorType=Menu}}"/>
+                        <Setter Property="CommandParameter" Value="{Binding}"/>
+                    </Style>
+                </MenuItem.ItemContainerStyle>
+            </MenuItem>
             <MenuItem
                 Header="Delete Question Pack" 
-                Icon="{fa:Icon FolderMinus}" />
+                Icon="{fa:Icon FolderMinus}" 
+                Command="{Binding DeleteActivePackCommand}"/>
             <Separator/>
             <MenuItem 
                 Header="_Import Question" 
                 Icon="{fa:Icon CloudArrowDown}" 
                 InputGestureText="Ctrl+I"
+                Command="{Binding ImportQuestionsCommand}"
             />
             <Separator/>
             <MenuItem 
                 Header="E_xit" 
                 Icon="{fa:Icon DoorOpen}" 
                 InputGestureText="Alt+F4"
+                Command="ApplicationCommands.Close"
             />
         </MenuItem>
         <MenuItem Header="_Edit">
@@ -37,34 +54,39 @@
                 Header="Add Question" 
                 Icon="{fa:Icon Plus}" 
                 InputGestureText="Insert" 
+                Command="{Binding ConfigurationViewModel.AddQuestionCommand}"
             />
             <MenuItem 
                 Header="Remove Question" 
                 Icon="{fa:Icon Minus}" 
                 InputGestureText="Delete" 
+                Command="{Binding ConfigurationViewModel.RemoveQuestionCommand}"
             />
             <MenuItem 
                 Header="Pack Options" 
                 Icon="{fa:Icon Sliders}" 
                 InputGestureText="Ctrl+O"
+                Command="{Binding ConfigurationViewModel.OpenPackOptionsCommand}"
             />
-            <!--<MenuItem Header="Set PackName" Command="{Binding PlayerViewModel.SetPackNameCommand}" />-->
         </MenuItem>
         <MenuItem Header="_View">
             <MenuItem 
                 Header="Play" 
                 Icon="{fa:Icon Play}" 
                 InputGestureText="Ctrl+P"
+                Command="{Binding ShowPlayerViewCommand}"
             />
             <MenuItem 
                 Header="Edit" 
                 Icon="{fa:Icon Gears}" 
                 InputGestureText="Ctrl+E"
+                Command="{Binding ShowConfigurationViewCommand}"
             />
             <MenuItem 
                 Header="Fullscreen" 
                 Icon="{fa:Icon Expand}" 
                 InputGestureText="Alt+Enter"
+                Command="{x:Static command:CustomCommands.ToggleFullscreen}"
             />
         </MenuItem>
     </Menu>

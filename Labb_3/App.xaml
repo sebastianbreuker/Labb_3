@@ -1,9 +1,9 @@
 ﻿<Application x:Class="Labb_3.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Labb_3"
-             StartupUri="PackOptionsDialog.xaml">
+             xmlns:utils="clr-namespace:Labb_3.Utilities"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <utils:NullableTimeSpanSecondsConverter x:Key="NullableTimeSpanSecondsConverter"/>
     </Application.Resources>
 </Application>

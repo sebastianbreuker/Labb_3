@@ -3,11 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Labb_3"
         xmlns:views="clr-namespace:Labb_3.Views"
+        xmlns:command="clr-namespace:Labb_3.Command"
         mc:Ignorable="d"
         d:Width="600" d:Height="500" d:FontSize="24"
-        Title="MainWindow" Height="450" Width="800">
+        MinHeight="700" MinWidth="800"
+        Title="Question Game" Height="750" Width="850">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close"
+                        Executed="CloseCommand_Executed" />
+        <CommandBinding Command="{x:Static command:CustomCommands.ToggleFullscreen}"
+                        Executed="ToggleFullscreenCommand_Executed" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="F4"
+                    Modifiers="Alt"
+                    Command="ApplicationCommands.Close" />
+        <KeyBinding Key="Insert"
+                    Command="{Binding ConfigurationViewModel.AddQuestionCommand}" />
+        <KeyBinding Key="Delete"
+                    Command="{Binding ConfigurationViewModel.RemoveQuestionCommand}" />
+        <KeyBinding Key="O"
+                    Modifiers="Control"
+                    Command="{Binding ConfigurationViewModel.OpenPackOptionsCommand}" />
+        <KeyBinding Key="I"
+                    Modifiers="Control"
+                    Command="{Binding ImportQuestionsCommand}" />
+        <KeyBinding Key="P"
+                    Modifiers="Control"
+                    Command="{Binding ShowPlayerViewCommand}" />
+        <KeyBinding Key="E"
+                    Modifiers="Control"
+                    Command="{Binding ShowConfigurationViewCommand}" />
+        <KeyBinding Key="Enter"
+                    Modifiers="Alt"
+                    Command="{x:Static command:CustomCommands.ToggleFullscreen}" />
+    </Window.InputBindings>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,9 +50,18 @@
 
         <views:MenuView Grid.Row="0"/>
 
-        <!--<views:PlayerView Grid.Row="1"/>-->
-         
-        <views:ConfigurationView Grid.Row="1"/>
+        <Grid Grid.Row="1">
+            <views:ConfigurationView 
+                DataContext="{Binding ConfigurationViewModel}"
+                Visibility="{Binding DataContext.IsConfigurationViewVisible, 
+                RelativeSource={RelativeSource AncestorType=Window}, 
+                Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <views:PlayerView 
+                DataContext="{Binding PlayerViewModel}"
+                Visibility="{Binding DataContext.IsPlayerViewVisible, 
+                RelativeSource={RelativeSource AncestorType=Window}, 
+                Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        </Grid>
 
     </Grid>
    

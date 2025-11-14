@@ -18,15 +18,48 @@ namespace Labb_3
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        private bool _isFullscreen;
+        private WindowState _storedWindowState;
+        private WindowStyle _storedWindowStyle;
+        private ResizeMode _storedResizeMode;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            
-            DataContext = new MainWindowViewModel();
+            if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            {
+                DataContext = new MainWindowViewModel();
+            }
         }
 
-        
+        private void CloseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void ToggleFullscreenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (!_isFullscreen)
+            {
+                _storedWindowState = WindowState;
+                _storedWindowStyle = WindowStyle;
+                _storedResizeMode = ResizeMode;
+
+                WindowStyle = WindowStyle.None;
+                ResizeMode = ResizeMode.NoResize;
+                WindowState = WindowState.Maximized;
+                Topmost = true;
+            }
+            else
+            {
+                Topmost = false;
+                WindowStyle = _storedWindowStyle;
+                ResizeMode = _storedResizeMode;
+                WindowState = _storedWindowState;
+            }
+
+            _isFullscreen = !_isFullscreen;
+        }
     }
 }

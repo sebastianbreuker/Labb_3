@@ -16,9 +16,13 @@
                 Margin="15 5 15 5" 
                 FontWeight="Bold"/>
             <TextBox 
-                Height=" 100" 
+                Height="100" 
                 Margin="15 0 15 20"
-                />
+                TextWrapping="Wrap"
+                AcceptsReturn="True"
+                Text="{Binding Text, 
+                Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom">
@@ -27,25 +31,36 @@
                 Margin="15 25 15 0" 
                 FontWeight="Bold"/>
             <TextBox 
-                Margin="15 0 15 0"/>
+                Margin="15 0 15 0"
+                Text="{Binding Options[0].Text,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
                 Content="Incorrect Answer:" 
                 Margin="15 0 15 0" 
                 FontWeight="Bold"/>
             <TextBox 
-                Margin="15 0 15 0"/>
+                Margin="15 0 15 0"
+                Text="{Binding Options[1].Text,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
                 Content="Incorrect Answer:" 
                 Margin="15 0 15 0" 
                 FontWeight="Bold"/>
             <TextBox 
-                Margin="15 0 15 0"/>
+                Margin="15 0 15 0"
+                Text="{Binding Options[2].Text,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}"/>
             <Label 
                 Content="Incorrect Answer:" 
                 Margin="15 0 15 0" 
                 FontWeight="Bold"/>
             <TextBox 
-                Margin="15 0 15 25"/>
+                Margin="15 0 15 25"
+                Text="{Binding Options[3].Text,
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
     </Grid>

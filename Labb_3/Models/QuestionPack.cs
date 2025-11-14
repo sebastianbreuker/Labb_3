@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Labb_3.Models
 {
     public enum Difficulty { Easy, Medium, Hard }
-    class QuestionPack
+    public class QuestionPack
     {
         public string Name { get; set; } = "New Pack";
 
